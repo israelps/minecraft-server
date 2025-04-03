@@ -1,4 +1,6 @@
 # Minecraft server using docker
+This project leverages the [itzg/docker-minecraft-server](https://github.com/itzg/docker-minecraft-server) Docker image to set up and run a Minecraft server. For detailed information about the available configuration options and environment variables, please refer to the official repository.
+
 ## Pre-requisites:
 ### Raspberry Pi:
 A Raspberry Pi 3B+ or preferably a Raspberry Pi 4 (with 4GB or 8GB RAM recommended for better performance) running Raspberry Pi OS (or another compatible Linux distribution).
