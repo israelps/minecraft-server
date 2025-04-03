@@ -60,7 +60,7 @@ docker compose logs -f
 5. For the Server Address, enter the Raspberry Pi's local IP address (e.g., `192.168.1.100`). You usually don't need to add the port `:25565` if it's the default, but you can include it (`192.168.1.100:25565`).
 6. Click `Done` and try to connect!
 
-#### Allowing Friends to Connect (Internet): TODO (Exnalto)
+#### Allowing Friends to Connect (Internet): TODO (@exnalto)
 
 ### Important Considerations
 
