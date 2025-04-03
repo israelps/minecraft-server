@@ -1,0 +1,49 @@
+version: '3.8' # Use a recent version of the compose file format
+
+services:
+  minecraft:
+    image: itzg/minecraft-server # The Docker image to use
+    container_name: mc-java-server # A friendly name for your container
+
+    ports:
+      # Map port 25565 on your Pi (host) to port 25565 in the container
+      # This is the standard Minecraft Java Edition port
+      - "25565:25565/tcp"
+
+    environment:
+      # === MUST ACCEPT EULA ===
+      EULA: "TRUE"  # You MUST agree to the Minecraft EULA at https://account.mojang.com/documents/minecraft_eula
+
+      # === Server Type and Version ===
+      # Use 'PAPER' for better performance, especially on Pi.
+      # Other options: VANILLA, SPIGOT, FORGE, FABRIC, etc.
+      TYPE: "PAPER"
+      # Specify a version or use 'LATEST' (check itzg image docs for specifics)
+      VERSION: "LATEST"
+
+      # === Memory Allocation ===
+      # IMPORTANT for Raspberry Pi! Start low and adjust based on your Pi model.
+      # '1G' = 1 Gigabyte. For Pi 4 4GB/8GB, you might try '1536M' or '2G'.
+      # For Pi 3B+ or Pi 4 2GB, '1G' or even '768M' might be necessary.
+      # This is the Java Heap Size (Xmx). The container will use slightly more RAM overall.
+      MEMORY: "1G"
+
+      # === Optional Settings ===
+      # Set your server's Message of the Day (MOTD)
+      MOTD: "My Awesome Pi Minecraft Server!"
+      # Set the timezone (find yours with `timedatectl list-timezones`)
+      TZ: "America/Sao_Paulo" # Example timezone, change to yours!
+      # Set Operator status by Minecraft username
+      # OPS: "YourMinecraftUsername"
+      # Enable whitelist (recommended for security when exposing publicly)
+      # ENFORCE_WHITELIST: "TRUE"
+      # Add players to the whitelist (comma-separated)
+      # WHITELIST: "Player1,Player2"
+
+    volumes:
+      # Map a directory on your Pi (host) to the '/data' directory inside the container
+      # This is crucial for persisting your world, server properties, plugins, etc.
+      # '.' means the current directory (where docker-compose.yml is)
+      - ./minecraft-data:/data
+
+    restart: unless-stopped # Automatically restart the server unless you manually stop it
