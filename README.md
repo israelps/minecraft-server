@@ -1,5 +1,5 @@
 # Minecraft server using docker
-This project leverages the [itzg/docker-minecraft-server](https://github.com/itzg/docker-minecraft-server) Docker image to set up and run a Minecraft server. For detailed information about the available configuration options and environment variables, please refer to the official repository.
+This project leverages the [carlosedp/minecraft-server:arm64](https://github.com/carlosedp/minecraft-server-arm64) Docker image to set up and run a Minecraft server. For detailed information about the available configuration options and environment variables, please refer to the official repository.
 
 ## Pre-requisites:
 ### Raspberry Pi:
@@ -14,6 +14,12 @@ sudo apt upgrade -y
 ```
 
 ## Steps
+### Clone the Repository
+```bash
+cd ~
+git clone https://github.com/israelps/minecraft-server.git
+```
+
 ### Install Docker and Docker Compose
 #### Via bash script (need testing)
 
@@ -45,12 +51,12 @@ docker compose version
 ### Start the Minecraft server
 ```bash
 cd server
-docker compose up -d
+docker-compose up -d
 ```
 
 ### Monitor the server (Optional)
 ```bash
-docker compose logs -f
+docker-compose logs -f
 ```
 
 ### Connect to Your Server
@@ -85,25 +91,25 @@ Regularly back up the `./minecraft-data` directory! This contains your world and
 
 #### Stop the Server
 ```bash
-cd ~/minecraft-server && docker compose down
+cd ~/minecraft-server && docker-compose down
 ```
 
 #### Start the Server
 ```bash
-cd ~/minecraft-server && docker compose up -d
+cd ~/minecraft-server && docker-compose up -d
 ```
 
 #### Restart the Server
 ```bash
-cd ~/minecraft-server && docker compose restart
+cd ~/minecraft-server && docker-compose restart
 ```
 
 #### Update Minecraft (if using `VERSION: LATEST`)
 ```bash
 cd ~/minecraft-server
-docker compose pull # Download the latest itzg/minecraft-server image
-docker compose down # Stop the current server
-docker compose up -d # Start with the new image
+docker-compose pull # Download the latest itzg/minecraft-server image
+docker-compose down # Stop the current server
+docker-compose up -d # Start with the new image
 ```
 
 #### Access Server Console
