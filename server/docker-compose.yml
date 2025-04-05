@@ -2,7 +2,7 @@ version: '3.8' # Use a recent version of the compose file format
 
 services:
   minecraft:
-    image: itzg/minecraft-server # The Docker image to use
+    image: carlosedp/minecraft-server:arm64 # The Docker image to use
     container_name: mc-java-server # A friendly name for your container
 
     ports:
